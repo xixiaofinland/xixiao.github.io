@@ -1,4 +1,4 @@
-base_url = "https://blog.xixiao.info"
+base_url = "https://xixiao.info"
 theme = "zerm"
 title = "Xi Xiao Blog"
 description = "A personal blog"
@@ -93,7 +93,7 @@ center = true
 # copyright = "copyright notice here"
 
 # What is displayed in the top left corner of the website. Default is zerm.
-logo_text = "Xi Xiao"
+logo_text = "Xi's learning Journey"
 
 # Link in logo. Default returns you to $BASE_URL.
 logo_home_link = "/"
@@ -101,7 +101,8 @@ logo_home_link = "/"
 # Menu items to display. You define a url and the name of the menu item.
 # NOTE: `$BASE_URL/` must be included in the url name.
 main_menu = [
-              {url="http://xixiao.info", name="about", external=true}
+              {url="$BASE_URL/about", name="about me"}
+              {url="$BASE_URL/atom.xml", name="rss"}
 ]
 
 # Displayed as title of drop-down menu when size of main_menu > show_menu_items.
