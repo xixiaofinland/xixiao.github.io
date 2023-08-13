@@ -13,7 +13,7 @@ Instead of continuing the happy path, I decide to build a toy Cli to see how muc
 
 ## the Cli requirement
 
-I use Tmux to work on projects under "~/projects". Each of the projects are practically "folders".
+I use Tmux to work on projects under `~/projects`. Each of the projects are practically "folders".
 
 I wish to have a Cli tool to 
 1. initiate easily a corresponding Tmux session for each project 
