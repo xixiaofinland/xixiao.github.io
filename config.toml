@@ -79,7 +79,7 @@ show_menu_items = 2
 full_width = false
 
 # center theme with default width.
-center = false
+center = true
 
 # set a custom favicon. Must be placed in root of static/ directory...
 # favicon = ""
@@ -93,7 +93,7 @@ center = false
 # copyright = "copyright notice here"
 
 # What is displayed in the top left corner of the website. Default is zerm.
-logo_text = "zerm"
+logo_text = "Xi Xiao"
 
 # Link in logo. Default returns you to $BASE_URL.
 logo_home_link = "/"
@@ -101,9 +101,7 @@ logo_home_link = "/"
 # Menu items to display. You define a url and the name of the menu item.
 # NOTE: `$BASE_URL/` must be included in the url name.
 main_menu = [
-              {url="/about/", name="about"},
-              {url="/contact/", name="contact"},
-              {url="https://google.com", name="Google", external=true},
+              {url="http://xixiao.info", name="about", external=true}
 ]
 
 # Displayed as title of drop-down menu when size of main_menu > show_menu_items.
@@ -119,7 +117,7 @@ read_other_posts = "read other posts"
 
 # Enable math typesetting with KaTeX
 # Show math in pages with `math=true` in the TOML frontmatter
-enable_katex = true
+enable_katex = false
 
 # Options for disqus
 disqus = { enabled=false, short_name="" }
