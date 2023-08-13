@@ -101,8 +101,8 @@ logo_home_link = "/"
 # Menu items to display. You define a url and the name of the menu item.
 # NOTE: `$BASE_URL/` must be included in the url name.
 main_menu = [
-              {url="$BASE_URL/about", name="about me"}
-              {url="$BASE_URL/atom.xml", name="rss"}
+              {url="/about/", name="about me"},
+              {url="/atom.xml", name="rss"}
 ]
 
 # Displayed as title of drop-down menu when size of main_menu > show_menu_items.
