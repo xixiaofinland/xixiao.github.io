@@ -19,10 +19,10 @@ somewhere, such as remote API, local file, memory, etc., and the value to be
 retrieved can exist or not. This is where the `<Option>` and `<Result>` come into
 use.
 
-In Rust, majority of standard lib function calls returning either `<Option>` or
+In Rust, a plenty of standard lib function calls involving either `<Option>` or
 `<Result>`, which our code needs to deal with. This feels a bit tedious but also
 guarantees a better code quality. It's uncomfortably hard if we simply want to
-build quick-and-dirty try-out solutions. But I trust it is the right way to
+build quick-and-dirty throw-away solutions. But I trust it is the right way to
 train programming skills.
 
 ## Error handling
@@ -47,18 +47,14 @@ commands start with "cargo".
 
 Rust is a system programming language, meaning memory handling is a core part of
 it. What I'm learning is: when to use `String` and when `&str`, especially in
-complex data structures such as `Struct`, and `Enum`. This inevitably involves
-life-time anotation, an another unique feature in Rust. As a beginner, it's
-totally ok for us to clone, duplicate data from reference into owned copy if we
-can't figure out the compiler error. As time passes, we will eventually learn
-it.
+matching the
 
 ## Strong type
 
 As mentioned, Rust is a very strong typed language. Due to this, the compiler
-can give so much richer debugging information comparing to other languages.
+can give so much richer debugging information as opposed to other languages.
 Actually I have encountered bugs multiple times that I didn't realize but the
-compiler said so by simply matching the types.
+compiler said so by simply revealing the unmatched types.
 
 ## Deep learning curve
 
