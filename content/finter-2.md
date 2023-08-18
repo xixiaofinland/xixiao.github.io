@@ -9,17 +9,18 @@ categories = ["Rust"]
 I spent one week after-work spare time to build the simple `finter` Cli tool,
 and here are important things to list down.
 
-## <Option> and <Result> types
+## `<Option>` and `<Result>` types
 
-Rust has a very strong type system, including the special <Option> and <Result>
-types, both of which gives us hint the value may or may not exist. In
-programming, it's a common pattern that the code attempts to get a value from
+Rust has a very strong type system, including the special `<Option>` and `<Result>`
+types, both of which gives us hint the value may or may not exist. 
+
+In programming, it's a common pattern that the code attempts to get a value from
 somewhere, such as remote API, local file, memory, etc., and the value to be
-retrieved can exist or not. This is where the <Option> and <Result> come into
+retrieved can exist or not. This is where the `<Option>` and `<Result>` come into
 use.
 
-In Rust, majority of standard lib function calls returning either <Option> or
-<Result>, which our code needs to deal with. This feels a bit tedious but also
+In Rust, majority of standard lib function calls returning either `<Option>` or
+`<Result>`, which our code needs to deal with. This feels a bit tedious but also
 guarantees a better code quality. It's uncomfortably hard if we simply want to
 build quick-and-dirty try-out solutions. But I trust it is the right way to
 train programming skills.
@@ -28,7 +29,7 @@ train programming skills.
 
 As oppose to `try catch` throw-error pattern, Rust implements two types of
 errors: `recoverable` and `unrecoverable` errors. Recoverable error usually
-comes as part of <Result> type while unrecoverable errors like `panic!` will
+comes as part of `<Result>` type while unrecoverable errors like `panic!` will
 stop the program execution immediately.
 
 I'm not knowleagable enough to say which error handling pattern is superior, but
