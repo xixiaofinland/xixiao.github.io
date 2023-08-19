@@ -47,7 +47,9 @@ commands start with "cargo".
 
 Rust is a system programming language, meaning memory handling is a core part of
 it. What I'm learning is: when to use `String` and when `&str`, especially in
-matching the
+matching the compound type, such as `struct` and `enum` or the functions inside
+them. This leads to the learning of life-time annotation in Rust (another rabbit
+hole...).
 
 # Strong type
 
