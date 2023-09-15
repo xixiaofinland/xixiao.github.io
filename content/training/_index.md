@@ -1,31 +1,59 @@
-Salesforce platform is a sizable business investment.
-Many solutions deteriorate after the first several years. See people's comments below [my 5min LinkedIn video](https://www.linkedin.com/posts/xixiaofinland_salesforce-salesforcedeveloper-softwareengineer-activity-7086412746170261504-_KLr).
++++
+paginate_by = 5
++++
 
-New features take longer and longer to publish, bugs appear here and there. 
-It won't fix the problem by throwing more developers or testers. 
-On the contrary, a small dev team with right software engineering skills can
-manage large solutions.
+# Salesforce Developer Training
 
-This training aims to coach essential software engineering skills for
-your Salesforce development team.
+This training aims to coach general software engineering skills for Salesforce
+developers so they can deal with large solutions in the long run.
 
-The training is one or two day, and include subjects as:
+To book the training, contact me at tdxiaoxi2@gmail.com.
+
+## The Issue it solves
+
+Salesforce platform is a sizable business investment. However, many solutions
+deteriorate after the first several years. 
+
+New features take too long to publish, bugs appear here and there. This issue is
+actively discussed on this [5min LinkedIn
+video](https://www.linkedin.com/posts/xixiaofinland_salesforce-salesforcedeveloper-softwareengineer-activity-7086412746170261504-_KLr).
+
+It won't fix the problem by throwing more developers or testers. On the
+contrary, a small dev team with the right software engineering skills can manage
+large solutions.
+
+## Content
+
+This training aims to coach the essential software engineering skills for your
+development team.
+
+The training is **one or two days**, and can include subjects like:
 
 - Clean code concept
 - Object Oriented mindset
-- Unit testing concept 
+- Separation of concerns concept
+- Unit testing practice and tooling
 - Refactoring code
 - Salesforce modularization
 - Salesforce DevOps
 
 After the training the participants will be able to:
 
+- Understand how to structure the code
 - Understand and use clean code concept in work
 - Create Object Oriented code in Apex
+- Know what is unit testing and how it helps code refactoring
 - Know cutting-edge Salesforce 2nd gen package and modularization
 - Modern DevOps tools in Salesforce
 
+## Requirement
+
 This training requires active participation in discussions and frequent small
-hands-on programming exercises.
+hands-on Apex programming exercises.
+
+This training can be customized according the your dev team skill level. Follow
+up and feedback sessions after the training are also highly recommended
 
 To book the training, contact me at tdxiaoxi2@gmail.com.
+
+Thanks for your time!
