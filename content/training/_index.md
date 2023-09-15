@@ -1,15 +1,11 @@
 +++
-title="Salesforce developer training"
+title="Salesforce Developer Training"
 +++
-
-# Salesforce Developer Training
 
 This training aims to coach general software engineering skills for Salesforce
 developers so they can deal with large solutions in the long run.
 
-To book the training, contact me at tdxiaoxi2@gmail.com.
-
-## The Issue it solves
+# The Issue it solves
 
 Salesforce platform is a sizable business investment. However, many solutions
 deteriorate after the first several years. 
@@ -22,7 +18,7 @@ It won't fix the problem by throwing more developers or testers. On the
 contrary, a small dev team with the right software engineering skills can manage
 large solutions.
 
-## Content
+# Content
 
 This training aims to coach the essential software engineering skills for your
 development team.
@@ -46,7 +42,7 @@ After the training the participants will be able to:
 - Know cutting-edge Salesforce 2nd gen package and modularization
 - Modern DevOps tools in Salesforce
 
-## Requirement
+# Requirement
 
 This training requires active participation in discussions and frequent small
 hands-on Apex programming exercises.

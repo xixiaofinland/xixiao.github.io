@@ -2,8 +2,14 @@
 title="About me"
 +++
 
-Warm welcome! I am Xi, a freelancer Salesforce developer. I believe in learning
-by sharing, and I produce contents below:
+I am Xi, a freelancer Salesforce developer. 
+
+My [LinkedIn](https://www.linkedin.com/in/xixiaofinland/),
+[Github](https://github.com/xixiaofinland)
+
+My email: tdxiaoxi2@gmail.com
+
+I produce contents below:
 
 - [A Salesforce podcast](http://salesforceway.com/podcast)
 
