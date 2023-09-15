@@ -1,7 +1,7 @@
 base_url = "https://xixiao.info"
 theme = "zerm"
-title = "Xi Xiao Blog"
-description = "A personal blog"
+title = "Xi Xiao"
+description = "Personal site"
 
 default_language = "en"
 
@@ -93,7 +93,7 @@ center = true
 # copyright = "copyright notice here"
 
 # What is displayed in the top left corner of the website. Default is zerm.
-logo_text = "Xi's learning Journey"
+logo_text = "Xi's Home"
 
 # Link in logo. Default returns you to $BASE_URL.
 logo_home_link = "/"
@@ -102,6 +102,7 @@ logo_home_link = "/"
 # NOTE: `$BASE_URL/` must be included in the url name.
 main_menu = [
               {url="/about/", name="about me"},
+              {url="/training/", name="training"},
               {url="/atom.xml", name="rss"}
 ]
 
