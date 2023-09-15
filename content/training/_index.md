@@ -1,5 +1,5 @@
 +++
-paginate_by = 5
+title="Salesforce developer training"
 +++
 
 # Salesforce Developer Training
