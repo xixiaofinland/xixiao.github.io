@@ -1,16 +1,20 @@
-Salesforce solution is a sizable business investment. Many solutions deteriorate
-after the first several years. It requires correct software engineering skills
-for the team to keep up with the business (see people's comments below [my 5min
-LinkedIn
-video](https://www.linkedin.com/posts/xixiaofinland_salesforce-salesforcedeveloper-softwareengineer-activity-7086412746170261504-_KLr).
+Salesforce platform is a sizable business investment.
+Many solutions deteriorate after the first several years. See people's comments below [my 5min LinkedIn video](https://www.linkedin.com/posts/xixiaofinland_salesforce-salesforcedeveloper-softwareengineer-activity-7086412746170261504-_KLr).
+
+New features take longer and longer to publish, bugs appear here and there. 
+It won't fix the problem by throwing more developers or testers. 
+On the contrary, a small dev team with right software engineering skills can
+manage large solutions.
 
 This training aims to coach essential software engineering skills for
 your Salesforce development team.
 
 The training is one or two day, and include subjects as:
 
-- Clean code Concept
-- Object Oriented Concpet
+- Clean code concept
+- Object Oriented mindset
+- Unit testing concept 
+- Refactoring code
 - Salesforce modularization
 - Salesforce DevOps
 
