@@ -59,7 +59,7 @@ show_author = false
 show_categories = true
 
 # Show tags a blog post is marked with in its meta data.
-show_tags = true
+show_tags = false
 
 # Theme color. You can have any color you want, so long as it's...
 # ["orange", "blue", "red", "green", "pink"]
