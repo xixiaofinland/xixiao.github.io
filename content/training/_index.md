@@ -23,7 +23,7 @@ large solutions.
 This training aims to coach the essential software engineering skills for your
 development team.
 
-The training is **one or two days**, and can include subjects like:
+The training is **one or two days**, and include subjects like:
 
 - Clean code concept
 - Object Oriented mindset
