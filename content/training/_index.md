@@ -11,8 +11,9 @@ Salesforce platform is a sizable business investment. However, many solutions
 deteriorate after the first several years. 
 
 New features take too long to publish, bugs appear here and there. This issue is
-actively discussed on this [5min LinkedIn
-video](https://www.linkedin.com/posts/xixiaofinland_salesforce-salesforcedeveloper-softwareengineer-activity-7086412746170261504-_KLr).
+actively discussed on LinkedIn:
+[video1](https://www.linkedin.com/posts/xixiaofinland_salesforce-salesforcedeveloper-softwareengineer-activity-7086412746170261504-_KLr),
+[video2](https://www.linkedin.com/posts/xixiaofinland_salesforce-salesforcedeveloper-ohana-activity-7091486354836008960-XJ0D?utm_source=share&utm_medium=member_desktop)
 
 It won't fix the problem by throwing more developers or testers. On the
 contrary, a small dev team with the right software engineering skills can manage
