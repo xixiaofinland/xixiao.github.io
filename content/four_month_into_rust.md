@@ -1,5 +1,5 @@
 +++
-title = "Thoughts After Four Months Into Rust"
+title = "Four Months Into Rust"
 date = 2023-09-30
 
 [taxonomies]
@@ -8,45 +8,48 @@ categories = ["Rust"]
 
 Here are some of my random thoughts.
 
-# `<Option>` and `<Result>` types
+# Monad 
 
-In Rust, 
+In functional programming, a `monad` is a structure that combines program
+fragments (functions) and wraps their return values in a type with additional
+computation.
+
+In Rust, `Option` and `Result` types (explained below) are monads used to reduce boilerplate
+code needed for common operations, such as dealing with nullable values or
+fallable function returns.
 
 - `Option` is a type that either has a value (Some) or no
 value (None), 
 - `Result` is a type that either success (Ok) or failure (Err).
 
-They are similar, both represent the possibility of `0` or `1`.
-
 These two types are fundamental building blocks and used everywhere in Rust. 
-
-Almost all functions in standard libs return either an
-`Option`, a `Result`, or a more complex type including one of them.
-
-This is a mindset shift to think about the code. 
-
-It reminders the programmer that so many spots in the code can fail, deal with **all of** them properly to eliminate bugs.
 
 
 # The way Rust wants us to think
 
-Due to the domination of `Option` and `Result` types, I now perceive Rust code as "a chain of failable actions".
+`Option` and `Result` types are everywhere. 
 
-It goes like this:
+Rust use them to turn complicated sequences of functions into succinct pipelines.
 
-1. Do action1, succeed or fail? If succeed then continue, else return an error.
-2. Do action2, succeed or fail? If succeed then continue, else return an error.
-3. Do action3...
+I now perceive Rust code as "a chain of fallable actions".
 
-And Rust wants us to think this way so much it builds many handy standard functions to aid this chaining thinking.
+The code logic in my mind always goes like this:
+
+1. Execute action1: succeed? Continue computation; fail? Do something and return an error.
+1. Execute action2: succeed? Continue computation; fail? Do something and return an error.
+3. Execute action3:...
+
+# Functions in Std Lib
+
+Rust wants us to think in this way so much that it builds many handy standard functions to aid chaining actions.
 
 For instance, `Result` type has `and_then()` function
 
 ```Rust
-// function1 will execute because the previous Result is a Ok
+// when left of dot is Ok, function1 will execute;
 Ok(2).and_then(function1)
 
-// function1 won't execute, and the Error is untouched and returned
+// when left of dot is Err, function1 will NOT execute;
 Err("not a number").and_then(function1)
 ```
 
@@ -60,25 +63,12 @@ let x = Err(13).map_err("new error message");
 assert_eq!(x, Err("new error message"));
 ```
 
-There are other built-in functions to aid the chaining thinking. 
+There are many other useful built-in functions.
 
-For exmaple, `Result::ok` converts a `Result` into `Option` without unwrap the inner data. 
+For exmaple: 
 
-There's also `Option::ok_or` and `Option::ok_or_else` to go from an `Option` to
-`Result`.
+- `Result::ok` converts a `Result` into `Option` without unwrap the inner data. 
 
-It takes time to build muscle memory to write idiomatic Rust code.
+- `Option::ok_or` and `Option::ok_or_else`, vise versa, converts a `Option` into `Result`.
 
-# Rust code can be abstract
-
-Rust has `<>`, `::`, `&*`, `ref`, etc. 
-And when these symbols are combined with traits, smart pointers...
-
-```Rust
-pub fn as_deref(&self) -> Result<&<T as Deref>::Target, &E>
-where T: Deref,
-```
-
-# Rust is huge
-
-
+These built-in fucntions are important in order to write idiomatic Rust code.
