@@ -77,7 +77,7 @@ despite that the `callRemoteService()` can fail with `error`.
 
 JavaScript compiler lets you compile this code successfully. 
 But it crashes in runtime when error is returned, and the code doesn't know how
-to handle it, it crashes in runtime, and you get errors like "The TypeError: null is not an object".
+to handle it. And you get errors like "The TypeError: null is not an object".
 
 The better way is to put the logic into the `try` block so error is caught and
 (hopefully) handled in the `catch` block.
