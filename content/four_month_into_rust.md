@@ -54,12 +54,12 @@ They're similar, and people argume whether `Promise` is a monad.
 They are the building blocks in Rust. 
 
 All types of data (String, Number, compund types...) can be wrapped into them.
-And Rust is indeed in favor of using them.
+And Rust is indeed in favor of it.
 
 For instance, a function returns `Option<String>` instead of `String`, 
 a remote service call returns `Result<bool>` instead of `bool`.
 
-Ok, ok... we can wrap everything into these two types, I got it. But why? what benifit?
+Ok, ok... we can wrap everything into these two types. But why? what benifit?
 
 ## Benefit
 
@@ -72,15 +72,15 @@ let json = callRemoteService();
 // use json for other logic now;
 ```
 
-In languages like JavaScript, you are allowed to execute without considering the nullable/fallable situation.
-In this case, the `callRemoteService()` can return `null` or fail with `error`.
+In languages like JavaScript, you are allowed to leave out the nullable/fallable check,
+despite that the `callRemoteService()` can fail with `error`.
 
 JavaScript compiler lets you compile this code successfully. 
-But it crashes in runtime when null or error occurs.
-You get errors like "The TypeError: null is not an object".
+But it crashes in runtime when error is returned, and the code doesn't know how
+to handle it, it crashes in runtime, and you get errors like "The TypeError: null is not an object".
 
 The better way is to put the logic into the `try` block so error is caught and
-handled in the `catch` block (if you are a responsible programmer).
+(hopefully) handled in the `catch` block.
 
 ```javascript
 let json;
