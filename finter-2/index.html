@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Build a Cli to learn Rust (2) - Xi Xiao</title>
+    
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"><meta name="description" content="Personal site Build a Cli to learn Rust (2) "/><meta name="keywords" content="Rust, " />
+    <meta property="og:title" content="Xi Xiao -&nbsp;Build a Cli to learn Rust (2)" />
+    <meta property="og:type" content="website"/><meta property="og:url" content="https:&#x2F;&#x2F;xixiao.info&#x2F;finter-2&#x2F;"/><meta property="og:description" content="Personal site"/>
+    <link rel="preload" href="https://xixiao.info/assets/fonts/FiraCode-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="https://xixiao.info/assets/fonts/FiraCode-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://xixiao.info/style.css?h=97e262212a0704163528">
+    <link rel="stylesheet" href=" https://xixiao.info/color/orange.css?h=a5a5d7faf9d4bc3e0b18">
+    
+<link rel="alternate" type="application/atom+xml" title="Xi Xiao RSS" href="https://xixiao.info/atom.xml"></head>
+    <body>
+        <div class="container center">
+<header class="header">
+    <div class="header__inner">
+        <div class="header__logo">
+            <a href="&#x2F;">
+    <div class="logo">
+        Xi&#x27;s Home
+    </div>
+</a>
+        </div>
+        <div class="menu-trigger">menu</div>
+    </div>
+    
+    <nav class="menu">
+        <ul class="menu__inner menu__inner--desktop">
+            
+            
+                    <li>
+                        <a href="
+    
+        https://xixiao.info
+    
+">Blog</a>
+                    </li>
+                
+                    <li>
+                        <a href="
+    
+        https://xixiao.info/training
+    
+">Training</a>
+                    </li>
+                
+                    <li>
+                        <a href="
+    
+        https://xixiao.info/about
+    
+">About me</a>
+                    </li>
+                
+            </ul>
+
+        <ul class="menu__inner menu__inner--mobile">
+            
+        <li>
+            <a href="
+    
+        https://xixiao.info
+    
+">Blog</a>
+        </li>
+        <li>
+            <a href="
+    
+        https://xixiao.info/training
+    
+">Training</a>
+        </li>
+        <li>
+            <a href="
+    
+        https://xixiao.info/about
+    
+">About me</a>
+        </li>
+        </ul>
+    </nav>
+
+    </header>
+<div class="content"><article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https:&#x2F;&#x2F;xixiao.info&#x2F;finter-2&#x2F;">Build a Cli to learn Rust (2)</a>
+            </h1>
+            
+    <div class="post-meta">
+        <span class="post-date">2023.08.18
+                </span>
+
+        <span class="post-author"></span>
+
+        
+
+    
+    :: {<a href="https://xixiao.info/categories/rust/">Rust</a>} 
+
+            
+        
+    </div>
+
+            
+    
+</header><p>I spent one week after-work spare time to build the simple <code>finter</code> Cli tool,
+and here are important things to list down.</p>
+<h1 id="option-and-result-types"><code>&lt;Option&gt;</code> and <code>&lt;Result&gt;</code> types</h1>
+<p>Rust has a very strong type system, including the special <code>&lt;Option&gt;</code> and <code>&lt;Result&gt;</code>
+types, both of which gives us hint the value may or may not exist. </p>
+<p>In programming, it's a common pattern that the code attempts to get a value from
+somewhere, such as remote API, local file, memory, etc., and the value to be
+retrieved can exist or not. This is where the <code>&lt;Option&gt;</code> and <code>&lt;Result&gt;</code> come into
+use.</p>
+<p>In Rust, a plenty of standard lib function calls involving either <code>&lt;Option&gt;</code> or
+<code>&lt;Result&gt;</code>, which our code needs to deal with. This feels a bit tedious but also
+guarantees a better code quality. It's uncomfortably hard if we simply want to
+build quick-and-dirty throw-away solutions. But I trust it is the right way to
+train programming skills.</p>
+<h1 id="error-handling">Error handling</h1>
+<p>As oppose to <code>try catch</code> throw-error pattern, Rust implements two types of
+errors: <code>recoverable</code> and <code>unrecoverable</code> errors. Recoverable error usually
+comes as part of <code>&lt;Result&gt;</code> type while unrecoverable errors like <code>panic!</code> will
+stop the program execution immediately.</p>
+<p>I'm not knowleagable enough to say which error handling pattern is superior, but
+stopping the execution feature from the  unrecoverable error is something
+try-catch can't do.</p>
+<h1 id="external-crates-and-the-cargo-tool">External crates and the cargo tool</h1>
+<p>The standard (i.e. built-in) libs are purposefully kept minimal, so many
+external crates are to be explored. I have so far positive experience on using
+the <code>cargo</code> tool from Rust. Actually cargo is a one-stop shop in Rust, all
+commands start with &quot;cargo&quot;.</p>
+<h1 id="memory-optimization">Memory optimization</h1>
+<p>Rust is a system programming language, meaning memory handling is a core part of
+it. What I'm learning is: when to use <code>String</code> and when <code>&amp;str</code>, especially in
+matching the compound type, such as <code>struct</code> and <code>enum</code> or the functions inside
+them. This leads to the learning of life-time annotation in Rust (another rabbit
+hole...).</p>
+<h1 id="strong-type">Strong type</h1>
+<p>As mentioned, Rust is a very strong typed language. Due to this, the compiler
+can give so much richer debugging information as opposed to other languages.
+Actually I have encountered bugs multiple times that I didn't realize but the
+compiler said so by simply revealing the unmatched types.</p>
+<h1 id="deep-learning-curve">Deep learning curve</h1>
+<p>Rust is notorious for its deep learning curve and I already feel it vividly.
+It's indeed challenging yet also brings plent fo joy if you enjoy the journey.
+It really makes us a better programmer :).</p>
+<p>Above are some thoughts I have in building this <code>finter</code> Cli tool. Hope you
+enjoyed reading too!</p>
+
+
+        
+    
+
+        
+        
+    </article></div>
+    <div class="pagination">
+        <div class="pagination__buttons">
+            </div>
+    </div>
+<footer class="footer">
+                    <div class="footer__inner"><div class="copyright">
+            <span>© 2023 Xi Xiao :: <a href="https://github.com/xixiaofinland">Github</a></span>
+            <span>:: <a href="https://www.linkedin.com/in/xixiaofinland/">LinkedIn</a></span>
+        </div>
+    <script type="text/javascript" src="https://xixiao.info/assets/js/main.js"></script>
+</div>
+                    
+
+                </footer></div>
+    </body>
+</html>

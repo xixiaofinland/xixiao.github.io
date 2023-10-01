@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://xixiao.info/</loc>
+    </url>
+    <url>
+        <loc>https://xixiao.info/about/</loc>
+    </url>
+    <url>
+        <loc>https://xixiao.info/categories/</loc>
+    </url>
+    <url>
+        <loc>https://xixiao.info/categories/rust/</loc>
+    </url>
+    <url>
+        <loc>https://xixiao.info/finter-1/</loc>
+        <lastmod>2023-08-13</lastmod>
+    </url>
+    <url>
+        <loc>https://xixiao.info/finter-2/</loc>
+        <lastmod>2023-08-18</lastmod>
+    </url>
+    <url>
+        <loc>https://xixiao.info/four-month-into-rust/</loc>
+        <lastmod>2023-09-30</lastmod>
+    </url>
+    <url>
+        <loc>https://xixiao.info/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://xixiao.info/tags/</loc>
+    </url>
+    <url>
+        <loc>https://xixiao.info/training/</loc>
+    </url>
+</urlset>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Build a Cli to learn Rust (1) - Xi Xiao</title>
+    
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"><meta name="description" content="Personal site Build a Cli to learn Rust (1) "/><meta name="keywords" content="Rust, " />
+    <meta property="og:title" content="Xi Xiao -&nbsp;Build a Cli to learn Rust (1)" />
+    <meta property="og:type" content="website"/><meta property="og:url" content="https:&#x2F;&#x2F;xixiao.info&#x2F;finter-1&#x2F;"/><meta property="og:description" content="Personal site"/>
+    <link rel="preload" href="https://xixiao.info/assets/fonts/FiraCode-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="https://xixiao.info/assets/fonts/FiraCode-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://xixiao.info/style.css?h=97e262212a0704163528">
+    <link rel="stylesheet" href=" https://xixiao.info/color/orange.css?h=a5a5d7faf9d4bc3e0b18">
+    
+<link rel="alternate" type="application/atom+xml" title="Xi Xiao RSS" href="https://xixiao.info/atom.xml"></head>
+    <body>
+        <div class="container center">
+<header class="header">
+    <div class="header__inner">
+        <div class="header__logo">
+            <a href="&#x2F;">
+    <div class="logo">
+        Xi&#x27;s Home
+    </div>
+</a>
+        </div>
+        <div class="menu-trigger">menu</div>
+    </div>
+    
+    <nav class="menu">
+        <ul class="menu__inner menu__inner--desktop">
+            
+            
+                    <li>
+                        <a href="
+    
+        https://xixiao.info
+    
+">Blog</a>
+                    </li>
+                
+                    <li>
+                        <a href="
+    
+        https://xixiao.info/training
+    
+">Training</a>
+                    </li>
+                
+                    <li>
+                        <a href="
+    
+        https://xixiao.info/about
+    
+">About me</a>
+                    </li>
+                
+            </ul>
+
+        <ul class="menu__inner menu__inner--mobile">
+            
+        <li>
+            <a href="
+    
+        https://xixiao.info
+    
+">Blog</a>
+        </li>
+        <li>
+            <a href="
+    
+        https://xixiao.info/training
+    
+">Training</a>
+        </li>
+        <li>
+            <a href="
+    
+        https://xixiao.info/about
+    
+">About me</a>
+        </li>
+        </ul>
+    </nav>
+
+    </header>
+<div class="content"><article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https:&#x2F;&#x2F;xixiao.info&#x2F;finter-1&#x2F;">Build a Cli to learn Rust (1)</a>
+            </h1>
+            
+    <div class="post-meta">
+        <span class="post-date">2023.08.13
+                </span>
+
+        <span class="post-author"></span>
+
+        
+
+    
+    :: {<a href="https://xixiao.info/categories/rust/">Rust</a>} 
+
+            
+        
+    </div>
+
+            
+    
+</header><p>I have spent over one month to study Rust, mostly read <a href="https://doc.rust-lang.org/book/title-page.html">the rust book</a>, listen to podcast, and practice <a href="https://github.com/rust-lang/rustlings">rustling</a>.
+Unlike all other languages I have tried, Rust is one of its kind and difficult to pick up.</p>
+<p>Instead of continuing the happy path, I decide to build a toy Cli to see how much I can use Rust now.</p>
+<h2 id="the-cli-requirement">the Cli requirement</h2>
+<p>I use Tmux to work on projects under <code>~/projects</code>. Each of the projects are practically &quot;folders&quot;.</p>
+<p>I wish to have a Cli tool to </p>
+<ol>
+<li>initiate easily a corresponding Tmux session for each project </li>
+<li>jump between these sessions effortlessly.</li>
+</ol>
+<p>I named this tool &quot;finter&quot;, and its MVP works like this:</p>
+<p>Run &quot;finter&quot; in the console:</p>
+<ul>
+<li>it will list all folders in &quot;~/projects&quot;</li>
+<li>it allows a single-selection</li>
+<li>it allows fuzzy search</li>
+<li>it creates a new or go to the existing session once a single-selection is made</li>
+</ul>
+<h2 id="an-existing-tool">an existing tool</h2>
+<p><a href="https://github.com/jrmoulton/tmux-sessionizer">tmux-sessionizer</a> is a similar tool but with features more than I need.
+Therefore, I plan to build my own and study tmux-sessionizer code.</p>
+<p>My first Rust app journey starts here!</p>
+
+
+        
+    
+
+        
+        
+    </article></div>
+    <div class="pagination">
+        <div class="pagination__buttons">
+            </div>
+    </div>
+<footer class="footer">
+                    <div class="footer__inner"><div class="copyright">
+            <span>© 2023 Xi Xiao :: <a href="https://github.com/xixiaofinland">Github</a></span>
+            <span>:: <a href="https://www.linkedin.com/in/xixiaofinland/">LinkedIn</a></span>
+        </div>
+    <script type="text/javascript" src="https://xixiao.info/assets/js/main.js"></script>
+</div>
+                    
+
+                </footer></div>
+    </body>
+</html>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Xi Xiao</title>
+    <subtitle>Personal site</subtitle>
+    <link href="https://xixiao.info/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://xixiao.info"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-09-30T00:00:00+00:00</updated>
+    <id>https://xixiao.info/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Monad (Four Months Into Rust)</title>
+        <published>2023-09-30T00:00:00+00:00</published>
+        <updated>2023-09-30T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://xixiao.info/four-month-into-rust/" type="text/html"/>
+        <id>https://xixiao.info/four-month-into-rust/</id>
+        
+        <content type="html">&lt;p&gt;Here are some of my random thoughts after four months into Rust.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;monad&quot;&gt;Monad&lt;&#x2F;h1&gt;
+&lt;p&gt;In functional programming, a &lt;code&gt;monad&lt;&#x2F;code&gt; is a structure that combines program
+fragments (functions) and wraps their return values in a type with additional
+computation.&lt;&#x2F;p&gt;
+&lt;p&gt;What is this ???!!!&lt;&#x2F;p&gt;
+&lt;p&gt;Let&#x27;s use Rust to explain.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;monad-in-rust&quot;&gt;Monad in Rust&lt;&#x2F;h1&gt;
+&lt;p&gt;In Rust, &lt;code&gt;Option&lt;&#x2F;code&gt; and &lt;code&gt;Result&lt;&#x2F;code&gt; are monads. &lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Option&lt;&#x2F;code&gt; is a type that either has a value (Some) or no value (None), &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;Result&lt;&#x2F;code&gt; is a type that either has a success (Ok) or a failure (Err).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;Rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-Rust &quot;&gt;&lt;code class=&quot;language-Rust&quot; data-lang=&quot;Rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;pub enum &lt;&#x2F;span&gt;&lt;span&gt;Option&amp;lt;T&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;    None,
+&lt;&#x2F;span&gt;&lt;span&gt;    Some(T),
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;Rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-Rust &quot;&gt;&lt;code class=&quot;language-Rust&quot; data-lang=&quot;Rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;pub enum &lt;&#x2F;span&gt;&lt;span&gt;Result&amp;lt;T, E&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;    Ok(T),
+&lt;&#x2F;span&gt;&lt;span&gt;    Err(E),
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Does this reminder you the
+&lt;a href=&quot;https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;Reference&#x2F;Global_Objects&#x2F;Promise&quot;&gt;Promise&lt;&#x2F;a&gt; in web?
+They&#x27;re similar, and people argume whether &lt;code&gt;Promise&lt;&#x2F;code&gt; is a monad.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;Option&lt;&#x2F;code&gt; and &lt;code&gt;Result&lt;&#x2F;code&gt; defintion has two pieces of important info: &lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;type&lt;&#x2F;code&gt; &lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;either...or&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;type&quot;&gt;Type&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;Option&lt;&#x2F;code&gt; and &lt;code&gt;Result&lt;&#x2F;code&gt; are Enum types with generics. Very simple, but fundamental.
+They are the building blocks in Rust. &lt;&#x2F;p&gt;
+&lt;p&gt;All types of data (String, Number, compund types...) can be wrapped into them.
+And Rust is indeed in favor of it.&lt;&#x2F;p&gt;
+&lt;p&gt;For instance, a function returns &lt;code&gt;Option&amp;lt;String&amp;gt;&lt;&#x2F;code&gt; instead of &lt;code&gt;String&lt;&#x2F;code&gt;, 
+a remote service call returns &lt;code&gt;Result&amp;lt;bool&amp;gt;&lt;&#x2F;code&gt; instead of &lt;code&gt;bool&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Ok, ok... we can wrap everything into these two types. But why? what benifit?&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;benefit&quot;&gt;Benefit&lt;&#x2F;h3&gt;
+&lt;p&gt;The benifit is to explicitly handle nullable&#x2F;fallable situations while reducing boilerplate code of dealing them.&lt;&#x2F;p&gt;
+&lt;p&gt;Example case: you need to call a remote service to fetch data.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;json &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;callRemoteService&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; use json for other logic now;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;In languages like JavaScript, you are allowed to leave out the nullable&#x2F;fallable check,
+despite that the &lt;code&gt;callRemoteService()&lt;&#x2F;code&gt; can fail with &lt;code&gt;error&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;JavaScript compiler lets you compile this code successfully. 
+But it crashes in runtime when error is returned, and the code doesn&#x27;t know how
+to handle it. And you get errors like &amp;quot;The TypeError: null is not an object&amp;quot;.&lt;&#x2F;p&gt;
+&lt;p&gt;The better way is to put the logic into the &lt;code&gt;try&lt;&#x2F;code&gt; block so error is caught and
+(hopefully) handled in the &lt;code&gt;catch&lt;&#x2F;code&gt; block.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;json&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;json &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;callRemoteService&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;catch&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;e&lt;&#x2F;span&gt;&lt;span&gt;){
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; handle error properly;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; use json for other logic now;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;How Rust deals with it?&lt;&#x2F;p&gt;
+&lt;p&gt;Rust takes a different approach. It has no &lt;code&gt;try...catch&lt;&#x2F;code&gt;, it asks you to handle all possible nullable&#x2F;fallable situation.
+This sounds tedious, but Rust has good ways to encapuslate boilerplate code.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;Rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-Rust &quot;&gt;&lt;code class=&quot;language-Rust&quot; data-lang=&quot;Rust&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; this function may fail, so return a Result&amp;lt;&amp;gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; if succeed, return Ok(&amp;quot;result data string&amp;quot;), or Err(&amp;quot;error msg&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;callRemoteService&lt;&#x2F;span&gt;&lt;span&gt;() -&amp;gt; Result&amp;lt;String&amp;gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; we have to explicitly &amp;quot;unwrap&amp;quot; the data from Result, 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; or compiler complains type unmatch: String v.s. Result&amp;lt;String&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; json: String = callRemoteService().&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;unwrap&lt;&#x2F;span&gt;&lt;span&gt;(); 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; use json for other logic now;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;either-or-computation&quot;&gt;Either...or computation&lt;&#x2F;h2&gt;
+&lt;p&gt;The nullable&#x2F;fallable check is so frequent in code that Monad helps to hide
+these checks to avoid boilerplate code.&lt;&#x2F;p&gt;
+&lt;p&gt;In idiomatic Rust code, the &lt;code&gt;either success...or fail&lt;&#x2F;code&gt; is usually encapsulated into
+&lt;code&gt;?&lt;&#x2F;code&gt;, so the code looks clean. Wonderful!&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;Rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-Rust &quot;&gt;&lt;code class=&quot;language-Rust&quot; data-lang=&quot;Rust&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; &amp;quot;?&amp;quot; means either continue the logic when success 
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; or stop and return the error in Result;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; json: String = callRemoteService()?; 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;the-way-rust-wants-us-to-think&quot;&gt;The way Rust wants us to think&lt;&#x2F;h1&gt;
+&lt;p&gt;Rust turn complicated sequences of nullable&#x2F;fallable checks into succinct pipelines.&lt;&#x2F;p&gt;
+&lt;p&gt;And it wants us to think in this way &lt;strong&gt;so much&lt;&#x2F;strong&gt; that it builds many 
+neat functions to aid this chaining behavior.&lt;&#x2F;p&gt;
+&lt;p&gt;For instance, &lt;code&gt;Result&lt;&#x2F;code&gt; type has &lt;code&gt;and_then()&lt;&#x2F;code&gt; function, so logic in &lt;code&gt;and_then()&lt;&#x2F;code&gt;
+executes only in success condition. No need to write &amp;quot;if success, else...&amp;quot;.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;Rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-Rust &quot;&gt;&lt;code class=&quot;language-Rust&quot; data-lang=&quot;Rust&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; when Ok, function1 will execute;
+&lt;&#x2F;span&gt;&lt;span&gt;Ok(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;).&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;and_then&lt;&#x2F;span&gt;&lt;span&gt;(function1)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; when Err, function1 will NOT execute;
+&lt;&#x2F;span&gt;&lt;span&gt;Err(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;not a number&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;).&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;and_then&lt;&#x2F;span&gt;&lt;span&gt;(function1)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;and similarly &lt;code&gt;map_err()&lt;&#x2F;code&gt; function transfers the error type and(or) message only
+when error occurs.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;Rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-Rust &quot;&gt;&lt;code class=&quot;language-Rust&quot; data-lang=&quot;Rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; x = Ok(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;).&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;map_err&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;new error message&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;assert_eq!(x, Ok(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; x = Err(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;13&lt;&#x2F;span&gt;&lt;span&gt;).&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;map_err&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;new error message&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;assert_eq!(x, Err(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;new error message&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;There are many other useful built-in functions. For exmaple: &lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Result::ok()&lt;&#x2F;code&gt; converts a &lt;code&gt;Result&lt;&#x2F;code&gt; into &lt;code&gt;Option&lt;&#x2F;code&gt; without unwrapping the inner data. &lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Option::ok_or()&lt;&#x2F;code&gt; and &lt;code&gt;Option::ok_or_else()&lt;&#x2F;code&gt;, vise versa, converts an &lt;code&gt;Option&lt;&#x2F;code&gt; into &lt;code&gt;Result&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;These built-in fucntions are important in order to write idiomatic Rust code.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Build a Cli to learn Rust (2)</title>
+        <published>2023-08-18T00:00:00+00:00</published>
+        <updated>2023-08-18T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://xixiao.info/finter-2/" type="text/html"/>
+        <id>https://xixiao.info/finter-2/</id>
+        
+        <content type="html">&lt;p&gt;I spent one week after-work spare time to build the simple &lt;code&gt;finter&lt;&#x2F;code&gt; Cli tool,
+and here are important things to list down.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;option-and-result-types&quot;&gt;&lt;code&gt;&amp;lt;Option&amp;gt;&lt;&#x2F;code&gt; and &lt;code&gt;&amp;lt;Result&amp;gt;&lt;&#x2F;code&gt; types&lt;&#x2F;h1&gt;
+&lt;p&gt;Rust has a very strong type system, including the special &lt;code&gt;&amp;lt;Option&amp;gt;&lt;&#x2F;code&gt; and &lt;code&gt;&amp;lt;Result&amp;gt;&lt;&#x2F;code&gt;
+types, both of which gives us hint the value may or may not exist. &lt;&#x2F;p&gt;
+&lt;p&gt;In programming, it&#x27;s a common pattern that the code attempts to get a value from
+somewhere, such as remote API, local file, memory, etc., and the value to be
+retrieved can exist or not. This is where the &lt;code&gt;&amp;lt;Option&amp;gt;&lt;&#x2F;code&gt; and &lt;code&gt;&amp;lt;Result&amp;gt;&lt;&#x2F;code&gt; come into
+use.&lt;&#x2F;p&gt;
+&lt;p&gt;In Rust, a plenty of standard lib function calls involving either &lt;code&gt;&amp;lt;Option&amp;gt;&lt;&#x2F;code&gt; or
+&lt;code&gt;&amp;lt;Result&amp;gt;&lt;&#x2F;code&gt;, which our code needs to deal with. This feels a bit tedious but also
+guarantees a better code quality. It&#x27;s uncomfortably hard if we simply want to
+build quick-and-dirty throw-away solutions. But I trust it is the right way to
+train programming skills.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;error-handling&quot;&gt;Error handling&lt;&#x2F;h1&gt;
+&lt;p&gt;As oppose to &lt;code&gt;try catch&lt;&#x2F;code&gt; throw-error pattern, Rust implements two types of
+errors: &lt;code&gt;recoverable&lt;&#x2F;code&gt; and &lt;code&gt;unrecoverable&lt;&#x2F;code&gt; errors. Recoverable error usually
+comes as part of &lt;code&gt;&amp;lt;Result&amp;gt;&lt;&#x2F;code&gt; type while unrecoverable errors like &lt;code&gt;panic!&lt;&#x2F;code&gt; will
+stop the program execution immediately.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m not knowleagable enough to say which error handling pattern is superior, but
+stopping the execution feature from the  unrecoverable error is something
+try-catch can&#x27;t do.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;external-crates-and-the-cargo-tool&quot;&gt;External crates and the cargo tool&lt;&#x2F;h1&gt;
+&lt;p&gt;The standard (i.e. built-in) libs are purposefully kept minimal, so many
+external crates are to be explored. I have so far positive experience on using
+the &lt;code&gt;cargo&lt;&#x2F;code&gt; tool from Rust. Actually cargo is a one-stop shop in Rust, all
+commands start with &amp;quot;cargo&amp;quot;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;memory-optimization&quot;&gt;Memory optimization&lt;&#x2F;h1&gt;
+&lt;p&gt;Rust is a system programming language, meaning memory handling is a core part of
+it. What I&#x27;m learning is: when to use &lt;code&gt;String&lt;&#x2F;code&gt; and when &lt;code&gt;&amp;amp;str&lt;&#x2F;code&gt;, especially in
+matching the compound type, such as &lt;code&gt;struct&lt;&#x2F;code&gt; and &lt;code&gt;enum&lt;&#x2F;code&gt; or the functions inside
+them. This leads to the learning of life-time annotation in Rust (another rabbit
+hole...).&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;strong-type&quot;&gt;Strong type&lt;&#x2F;h1&gt;
+&lt;p&gt;As mentioned, Rust is a very strong typed language. Due to this, the compiler
+can give so much richer debugging information as opposed to other languages.
+Actually I have encountered bugs multiple times that I didn&#x27;t realize but the
+compiler said so by simply revealing the unmatched types.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;deep-learning-curve&quot;&gt;Deep learning curve&lt;&#x2F;h1&gt;
+&lt;p&gt;Rust is notorious for its deep learning curve and I already feel it vividly.
+It&#x27;s indeed challenging yet also brings plent fo joy if you enjoy the journey.
+It really makes us a better programmer :).&lt;&#x2F;p&gt;
+&lt;p&gt;Above are some thoughts I have in building this &lt;code&gt;finter&lt;&#x2F;code&gt; Cli tool. Hope you
+enjoyed reading too!&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Build a Cli to learn Rust (1)</title>
+        <published>2023-08-13T00:00:00+00:00</published>
+        <updated>2023-08-13T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://xixiao.info/finter-1/" type="text/html"/>
+        <id>https://xixiao.info/finter-1/</id>
+        
+        <content type="html">&lt;p&gt;I have spent over one month to study Rust, mostly read &lt;a href=&quot;https:&#x2F;&#x2F;doc.rust-lang.org&#x2F;book&#x2F;title-page.html&quot;&gt;the rust book&lt;&#x2F;a&gt;, listen to podcast, and practice &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;rust-lang&#x2F;rustlings&quot;&gt;rustling&lt;&#x2F;a&gt;.
+Unlike all other languages I have tried, Rust is one of its kind and difficult to pick up.&lt;&#x2F;p&gt;
+&lt;p&gt;Instead of continuing the happy path, I decide to build a toy Cli to see how much I can use Rust now.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-cli-requirement&quot;&gt;the Cli requirement&lt;&#x2F;h2&gt;
+&lt;p&gt;I use Tmux to work on projects under &lt;code&gt;~&#x2F;projects&lt;&#x2F;code&gt;. Each of the projects are practically &amp;quot;folders&amp;quot;.&lt;&#x2F;p&gt;
+&lt;p&gt;I wish to have a Cli tool to &lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;initiate easily a corresponding Tmux session for each project &lt;&#x2F;li&gt;
+&lt;li&gt;jump between these sessions effortlessly.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;I named this tool &amp;quot;finter&amp;quot;, and its MVP works like this:&lt;&#x2F;p&gt;
+&lt;p&gt;Run &amp;quot;finter&amp;quot; in the console:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;it will list all folders in &amp;quot;~&#x2F;projects&amp;quot;&lt;&#x2F;li&gt;
+&lt;li&gt;it allows a single-selection&lt;&#x2F;li&gt;
+&lt;li&gt;it allows fuzzy search&lt;&#x2F;li&gt;
+&lt;li&gt;it creates a new or go to the existing session once a single-selection is made&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;an-existing-tool&quot;&gt;an existing tool&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jrmoulton&#x2F;tmux-sessionizer&quot;&gt;tmux-sessionizer&lt;&#x2F;a&gt; is a similar tool but with features more than I need.
+Therefore, I plan to build my own and study tmux-sessionizer code.&lt;&#x2F;p&gt;
+&lt;p&gt;My first Rust app journey starts here!&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
