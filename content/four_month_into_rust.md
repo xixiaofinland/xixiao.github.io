@@ -61,7 +61,7 @@ a remote service call returns `Result<bool>` instead of `bool`.
 
 Ok, ok... we can wrap everything into these two types. But why? what benifit?
 
-## Benefit
+### Benefit
 
 The benifit is to explicitly handle nullable/fallable situations while reducing boilerplate code of dealing them.
 
@@ -107,6 +107,11 @@ fn callRemoteService() -> Result<String>(){//}
 let json: String = callRemoteService().unwrap(); 
 // use json for other logic now;
 ```
+
+## Either...or computation
+
+The nullable/fallable check is so frequent in code that Monad helps to hide
+these checks to avoid boilerplate code.
 
 In idiomatic Rust code, the `either success...or fail` is usually encapsulated into
 `?`, so the code looks clean. Wonderful!
