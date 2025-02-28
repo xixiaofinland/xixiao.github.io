@@ -96,7 +96,7 @@ center = true
 logo_text = "Xi's Home"
 
 # Link in logo. Default returns you to $BASE_URL.
-logo_home_link = "/"
+logo_home_link = "/about/"
 
 # Menu items to display. You define a url and the name of the menu item.
 # NOTE: `$BASE_URL/` must be included in the url name.
