@@ -101,9 +101,8 @@ logo_home_link = "/"
 # Menu items to display. You define a url and the name of the menu item.
 # NOTE: `$BASE_URL/` must be included in the url name.
 main_menu = [
-              {url="/", name="Blog"},
-              {url="/training/", name="Training"},
               {url="/about/", name="About me"},
+              {url="/training/", name="Training"},
 ]
 
 # Displayed as title of drop-down menu when size of main_menu > show_menu_items.
