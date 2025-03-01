@@ -1,12 +1,12 @@
-base_url = "https://xixiao.info"
+base_url = "https://xixiao.info/about"
 theme = "zerm"
 title = "Xi Xiao"
-description = "Personal site"
+description = "Xi Xiao's site"
 
 default_language = "en"
 
 # Whether to generate a RSS feed automatically
-generate_feed = true
+generate_feed = false
 # 'atom.xml' (default if unspecified) and 'rss.xml' are officially supported
 # values for feed_filename in this theme. All other filenames will assume a
 # link type of 'application/rss+xml'.
@@ -96,7 +96,7 @@ center = true
 logo_text = "Xi's Home"
 
 # Link in logo. Default returns you to $BASE_URL.
-logo_home_link = "/about/"
+logo_home_link = "/"
 
 # Menu items to display. You define a url and the name of the menu item.
 # NOTE: `$BASE_URL/` must be included in the url name.
